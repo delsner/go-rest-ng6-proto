@@ -16,8 +16,8 @@ func init() {
     var (
         username string
         password string
-        dbName string
-        dbHost string
+        dbName   string
+        dbHost   string
     )
     if dbUrl := os.Getenv("DATABASE_URL"); dbUrl != "" {
         username = strings.Split(strings.Split(dbUrl, "//")[1], ":")[0]
