@@ -26,6 +26,8 @@ func main() {
     // get port from env or use default 8080
     port := utils.GetEnv("PORT", "8080")
 
+    // TODO: add ENV here (prod, dev, test) and setup router, server, db based on config
+
     // run http server
     r.Run(":" + port)
 }
