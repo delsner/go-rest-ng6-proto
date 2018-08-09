@@ -34,3 +34,6 @@ func (us *UserService) GetById(id string) (*models.User) {
 func (us *UserService) Create(user *models.User) (*models.User) {
     return us.userRepository.Create(user)
 }
+func (us *UserService) GetAll() ([]*models.User) {
+    return us.userRepository.GetAll()
+}

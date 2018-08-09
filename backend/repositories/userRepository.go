@@ -57,3 +57,15 @@ func (ur *UserRepository) Create(user *models.User) *models.User {
     }
     return user
 }
+
+func (ur *UserRepository) GetAll() []*models.User {
+    // initialize users
+    var users []*models.User
+
+    // fetch database
+    err := ur.db.Table("users").Find(&users).Error
+    if err == gorm.ErrRecordNotFound {
+        return nil
+    }
+    return users
+}

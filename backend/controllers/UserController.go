@@ -22,6 +22,15 @@ func GetUserById(c *gin.Context) {
     c.JSON(http.StatusBadRequest, gin.H{"error": "Error"})
 }
 
+func GetAllUsers(c *gin.Context) {
+    res, err := json.Marshal(userService.GetAll())
+    if err == nil {
+        c.JSON(http.StatusOK, string(res))
+        return
+    }
+    c.JSON(http.StatusBadRequest, gin.H{"error": "Error"})
+}
+
 func CreateUser(c *gin.Context) {
     user := models.User{}
     // This c.ShouldBind consumes c.Request.Body and it cannot be reused. TODO: check ShouldBindJSON
