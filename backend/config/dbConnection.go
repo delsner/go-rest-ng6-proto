@@ -21,7 +21,7 @@ func init() {
     )
     if dbUrl := os.Getenv("DATABASE_URL"); dbUrl != "" {
         username = strings.Split(strings.Split(dbUrl, "//")[1], ":")[0]
-        password = strings.Split(strings.Split(dbUrl, ":")[1], "@")[0]
+        password = strings.Split(strings.Split(dbUrl, ":")[2], "@")[0]
         dbName = strings.Split(strings.Split(dbUrl, "@")[1], "/")[1]
         dbHost = strings.Split(strings.Split(dbUrl, "@")[1], ":")[0]
     } else {
