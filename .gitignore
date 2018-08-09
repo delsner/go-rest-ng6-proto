@@ -17,5 +17,6 @@
 *.iml
 *.ipr
 
-#
-# vendor/*/
+# vendor / external libs
+vendor/*/
+frontend/node_modules
