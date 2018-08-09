@@ -3,10 +3,34 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "STQSdSj2FcpCf0NLfdsKhNutQT0=",
-			"path": "github.com/gorilla/mux",
-			"revision": "e48e440e4c92e3251d812f8ce7858944dfa3331c",
-			"revisionTime": "2018-08-07T07:52:56Z"
+			"checksumSHA1": "4PTNH3EdQfDIze6mxjkBZH8vLt8=",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "9666ba67383f6cc7bed3bb18691c2382717d51ae",
+			"revisionTime": "2018-08-07T05:49:31Z"
+		},
+		{
+			"checksumSHA1": "BjShmaQTKI8+411rCb7LFqJkLA0=",
+			"path": "github.com/gin-gonic/gin/binding",
+			"revision": "9666ba67383f6cc7bed3bb18691c2382717d51ae",
+			"revisionTime": "2018-08-07T05:49:31Z"
+		},
+		{
+			"checksumSHA1": "woO1qIxIeQ1bcbPSiMfAKk3r4xg=",
+			"path": "github.com/gin-gonic/gin/json",
+			"revision": "9666ba67383f6cc7bed3bb18691c2382717d51ae",
+			"revisionTime": "2018-08-07T05:49:31Z"
+		},
+		{
+			"checksumSHA1": "dOBf1v1ayrifsReh0Dq48f4+hek=",
+			"path": "github.com/gin-gonic/gin/render",
+			"revision": "9666ba67383f6cc7bed3bb18691c2382717d51ae",
+			"revisionTime": "2018-08-07T05:49:31Z"
+		},
+		{
+			"checksumSHA1": "uuLcVQXUw0CNt8Y5tsmzLWGlixI=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "89a0c16f4dc2a70c0ed864d8ef64878f24fdaa51",
+			"revisionTime": "2018-08-04T22:03:15Z"
 		},
 		{
 			"checksumSHA1": "f7M/c3JpA+2BnvJFLF7n+8GE9E8=",
@@ -19,12 +43,6 @@
 			"path": "github.com/jinzhu/gorm/dialects/postgres",
 			"revision": "409121d9e394922787885b001d148a05e3a42b6c",
 			"revisionTime": "2018-07-26T23:43:49Z"
-		},
-		{
-			"checksumSHA1": "4eelJOSLZoDzLuaJvgilOBVNovU=",
-			"path": "github.com/jinzhu/inflection",
-			"revision": "04140366298a54a039076d798123ffa108fff46c",
-			"revisionTime": "2018-03-08T03:36:59Z"
 		},
 		{
 			"checksumSHA1": "s6eyIXpJ7VAU06FM27GcEBM/5lo=",
