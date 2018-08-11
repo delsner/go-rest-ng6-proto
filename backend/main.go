@@ -9,6 +9,7 @@ import (
 func setupRouter() *gin.Engine {
     r := gin.Default() // init router with default mw (e.g. logging)
 
+    r.GET("/api/json/:userId", controllers.GetUserByIdJson)
     user := r.Group("/api/user")
     {
         user.POST("/", controllers.CreateUser)

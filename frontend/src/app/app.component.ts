@@ -47,6 +47,14 @@ export class AppComponent {
                     .subscribe((user: User) => {
                         console.log(user);
                     });
+                this.http.get("api/json/" + user.ID, {
+                })
+                    .pipe(
+                        map((res: any) => JSON.parse(res))
+                    )
+                    .subscribe((user: User) => {
+                        console.log(user);
+                    });
             });
     }
 }
