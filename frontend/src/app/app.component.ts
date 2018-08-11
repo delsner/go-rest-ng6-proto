@@ -24,12 +24,29 @@ export class AppComponent {
         let user: User = new User();
         user.Name = "Daniel";
         user.Phone = "1234";
-        this.http.post("api/user", user)
+        this.http.post("api/user", String.fromCharCode.apply(null, User.encode(user).finish()), {
+            // String.fromCharCode.apply(null, User.encode(user).finish())
+            headers: {
+                'Accept': 'application/x-protobuf',
+                'Content-Type': 'application/x-protobuf'
+            },
+            responseType: "arraybuffer"
+        })
             .pipe(
-                map((res: any) => JSON.parse(res))
+                map((res: ArrayBuffer) => User.decode(new Uint8Array(res)))
             )
             .subscribe((user: User) => {
                 console.log(user);
+                this.http.get("api/user/" + user.ID, {
+                    headers: {'Accept': 'application/x-protobuf'},
+                    responseType: "arraybuffer"
+                })
+                    .pipe(
+                        map((res: ArrayBuffer) => User.decode(new Uint8Array(res)))
+                    )
+                    .subscribe((user: User) => {
+                        console.log(user);
+                    });
             });
     }
 }

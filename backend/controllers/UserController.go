@@ -6,6 +6,9 @@ import (
     "github.com/delsner/go-rest-ng6-proto/backend/services"
     "github.com/gin-gonic/gin"
     "github.com/delsner/go-rest-ng6-proto/backend/models"
+    "log"
+    "github.com/golang/protobuf/proto"
+    "github.com/gin-gonic/gin/binding"
 )
 
 var userService = services.GetUserServiceInstance()
@@ -13,9 +16,13 @@ var userService = services.GetUserServiceInstance()
 func GetUserById(c *gin.Context) {
     userId := c.Param("userId")
     if userId != "" {
-        res, err := json.Marshal(userService.GetById(userId))
+        user := userService.GetById(userId)
+        res, err := proto.Marshal(user)
+        if err != nil {
+            log.Fatalln("Failed to encode user data:", err)
+        }
         if err == nil {
-            c.JSON(http.StatusOK, string(res))
+            c.Data(http.StatusOK, binding.MIMEPROTOBUF, res)
             return
         }
     }
@@ -23,7 +30,7 @@ func GetUserById(c *gin.Context) {
 }
 
 func GetAllUsers(c *gin.Context) {
-    res, err := json.Marshal(userService.GetAll())
+    res, err := json.Marshal(userService.GetAll()) // check: https://github.com/golang/protobuf/issues/507
     if err == nil {
         c.JSON(http.StatusOK, string(res))
         return
@@ -33,11 +40,10 @@ func GetAllUsers(c *gin.Context) {
 
 func CreateUser(c *gin.Context) {
     user := models.User{}
-    // This c.ShouldBind consumes c.Request.Body and it cannot be reused. TODO: check ShouldBindJSON
-    err := c.ShouldBind(&user)
+    err := binding.ProtoBuf.Bind(c.Request, &user)
     if err == nil {
-        res, err := json.Marshal(userService.Create(&user))
-        c.JSON(http.StatusOK, string(res))
+        res, err := proto.Marshal(userService.Create(&user))
+        c.Data(http.StatusOK, binding.MIMEPROTOBUF, res)
         if err == nil {
             return
         }
